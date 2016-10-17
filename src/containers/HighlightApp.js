@@ -40,6 +40,9 @@ class HighlightApp extends Component {
     return (
       <div className="row center-xs">
         <div className="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+          <a href="https://github.com/ydeshayes/react-highlight-example-app">
+            <img style={{position: 'absolute', top: 0, right: 0, border: 0}} src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Source" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" />
+          </a>
           <h1>Simple highlight example</h1>
           <Highlightable ranges={this.props.ranges.get('1', new List()).toJS()}
                  enabled={true}
