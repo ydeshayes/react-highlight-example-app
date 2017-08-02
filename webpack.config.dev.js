@@ -8,9 +8,7 @@ const GLOBALS = {
 };
 
 export default {
-  debug: true,
   devtool: 'cheap-module-eval-source-map', // more info:https://webpack.github.io/docs/build-performance.html#sourcemaps and https://webpack.github.io/docs/configuration.html#devtool
-  noInfo: true, // set to false to see a list of every file being bundled.
   entry: [
     'webpack-hot-middleware/client?reload=true',
     './src/index'
@@ -32,11 +30,11 @@ export default {
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [
-      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel', 'eslint']},
-      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: ['file']},
-      {test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']},
-      {test: /\.json$/, loader: 'json'}
+    rules: [
+      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel-loader', 'eslint-loader']},
+      {test: /\.(jpe?g|png|gif|svg)$/i, loaders: ['file-loader']},
+      {test: /(\.css|\.scss)$/, loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']},
+      {test: /\.json$/, loader: 'json-loader'}
     ]
   }
 };
