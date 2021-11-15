@@ -1,17 +1,22 @@
+/*eslint-disable import/default*/
+
+import './styles/styles.scss';
+
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {render} from 'react-dom';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import configureStore from './store/configureStore';
+import HighlightApp from './containers/HighlightApp';
+
+const store = configureStore();
+
+render(
+  <Provider store={store}>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <HighlightApp />
+    </MuiThemeProvider>
+  </Provider>, document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
