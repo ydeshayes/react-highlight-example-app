@@ -1,6 +1,6 @@
 import * as appActions from '../actions/appActions';
 
-import Highlightable from 'highlightable';
+import Highlightable, { Node } from 'highlightable';
 import RaisedButton  from 'material-ui/RaisedButton';
 import Tooltip from 'rc-tooltip';
 import React, { Component } from 'react';
@@ -101,6 +101,23 @@ class HighlightApp extends Component {
                    };
                  })}
                  text={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae magna lacus. Sed rhoncus tortor eget venenatis faucibus. Vivamus quis nunc vel eros volutpat auctor. Suspendisse sit amet lorem tristique lectus hendrerit aliquet. Aliquam erat volutpat. Vivamus malesuada, neque at consectetur semper, nibh urna ullamcorper metus, in dapibus arcu massa feugiat erat. Nullam hendrerit malesuada dictum. Nullam mattis orci diam, eu accumsan est maximus quis. Cras mauris nibh, bibendum in pharetra vitae, porttitor at ante. Duis pharetra elit ante, ut feugiat nibh imperdiet eget. Aenean at leo consectetur, sodales sem sit amet, consectetur massa. Ut blandit erat et turpis vestibulum euismod. Cras vitae molestie libero, vel gravida risus. Curabitur dapibus risus eu justo maximus, efficitur blandit leo porta. Donec dignissim felis ac turpis pharetra lobortis. Sed quis vehicula nulla.'}
+          />
+          <h1>Custom node example</h1>
+          <Highlightable ranges={this.props.ranges.get('5', new List()).toJS()}
+                 enabled={true}
+                 style={{textAlign: 'left'}}
+                 onTextHighlighted={this.onTextHighlighted.bind(this)}
+                 id={'5'}
+                 highlightStyle={{
+                  backgroundColor: '#ffcc80'
+                }}
+                nodeRenderer={(i, r, text) => {
+                  return <Node id="test"
+                  range={r}
+                  charIndex={i}
+                  key={`test-${i}`}>{text[i]}</Node>
+                }}
+                text={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae magna lacus. Sed rhoncus tortor eget venenatis faucibus. Vivamus quis nunc vel eros volutpat auctor. Suspendisse sit amet lorem tristique lectus hendrerit aliquet. Aliquam erat volutpat. Vivamus malesuada, neque at consectetur semper, nibh urna ullamcorper metus, in dapibus arcu massa feugiat erat. Nullam hendrerit malesuada dictum. Nullam mattis orci diam, eu accumsan est maximus quis. Cras mauris nibh, bibendum in pharetra vitae, porttitor at ante. Duis pharetra elit ante, ut feugiat nibh imperdiet eget. Aenean at leo consectetur, sodales sem sit amet, consectetur massa. Ut blandit erat et turpis vestibulum euismod. Cras vitae molestie libero, vel gravida risus. Curabitur dapibus risus eu justo maximus, efficitur blandit leo porta. Donec dignissim felis ac turpis pharetra lobortis. Sed quis vehicula nulla.'}
           />
         </div>
       </div>
